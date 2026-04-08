@@ -1,4 +1,5 @@
 const inputItem = document.getElementById("input-item");
+const listaDeCompras = document.getElementById("lista-de-compras");//Usamos getElementById("lista-de-compras") para acessar a lista.
 
 const botaoAdicionar = document.getElementById("adicionar-item");
 let contador = 0;
@@ -16,5 +17,16 @@ botaoAdicionar.addEventListener("click", (evento) => {
     const inputCheckbox = document.createElement("input");
     inputCheckbox.type = "checkbox";
     inputCheckbox.id = "checkbox-"+contador++;
+    const nomeItem = document.createElement("p");
+    nomeItem.innerText=inputItem.value; //innerText acessa o conteúdo de texto. Assim, toda vez que alguém digitar algo no campo de digitação, o valor de inputItem será atribuido a nomeItem.
+    containerItemDaLista.appendChild(inputCheckbox);// Primeiro, precisamos associar o checkbox e o parágrafo com o container, sendo este o elemento pai.
+    containerItemDaLista.appendChild(nomeItem);//Dentro dos parênteses do appendChild(), colocamos o elemento que queremos inserir no container, que será o elemento pai.
+    itemDaLista.appendChild(containerItemDaLista);//Acessamos o container pai, que é o itemDaLista, e usar o .appendChild() para anexar o containerItemDaLista como um filho dentro dele.
+    listaDeCompras.appendChild(itemDaLista);
+
+    const diaDaSemana = new Date().toLocaleDateString("pt-br", { weekday: "long" }); // Acessa o dia da semana atual 
+    const data = new Date().toLocaleDateString("pt-br"); // Acessa a data atual no formato dia/mês/ano, utilizando o método toLocaleDateString() para formatar a data de acordo com as convenções brasileiras.
+    const dataCompleta = `${diaDaSemana} (${data})`;
+
 
 })
