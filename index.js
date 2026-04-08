@@ -21,6 +21,14 @@ botaoAdicionar.addEventListener("click", (evento) => {
     const nomeItem = document.createElement("p");
     nomeItem.innerText=inputItem.value; //innerText acessa o conteúdo de texto. Assim, toda vez que alguém digitar algo no campo de digitação, o valor de inputItem será atribuido a nomeItem.
 
+    inputCheckbox.addEventListener("click", function(){
+        if(inputCheckbox.checked){
+            nomeItem.style.textDecoration = "line-through"; //Se o checkbox estiver marcado, o estilo de texto do nome do item será alterado para "line-through", o que significa que o texto será riscado.
+        }else{
+            nomeItem.style.textDecoration = "none"; //Se o checkbox não estiver marcado, o estilo de texto do nome do item será alterado para "none", o que significa que o texto não será riscado.
+        }
+    })
+
     containerItemDaLista.appendChild(inputCheckbox);// Primeiro, precisamos associar o checkbox e o parágrafo com o container, sendo este o elemento pai.
     containerItemDaLista.appendChild(nomeItem);//Dentro dos parênteses do appendChild(), colocamos o elemento que queremos inserir no container, que será o elemento pai.
     itemDaLista.appendChild(containerItemDaLista);// Depois, associamos o container com o item da lista, sendo este o elemento pai.
@@ -39,4 +47,17 @@ botaoAdicionar.addEventListener("click", (evento) => {
     itemDaLista.appendChild(itemData);
     listaDeCompras.appendChild(itemDaLista);
 
+    verificarListaVazia();
+    
 })
+
+const mensagemListaVazia = document.querySelector(".mensagem-lista-vazia");
+    function verificarListaVazia(){
+        const itensDaLista = listaDeCompras.querySelectorAll("li"); // Acessa todos os itens da lista utilizando querySelectorAll("li") para selecionar todos os elementos <li> dentro da lista de compras.
+        if(itensDaLista.length === 0){
+            mensagemListaVazia.style.display = "block"; // Se não houver itens na lista, exibe a mensagem de lista vazia.
+        }else{
+            mensagemListaVazia.style.display = "none"; // Caso contrário, oculta a mensagem de lista vazia.
+        }
+    }
+    verificarListaVazia();
