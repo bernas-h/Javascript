@@ -7,4 +7,4 @@ const mensagemListaVazia = document.querySelector(".mensagem-lista-vazia");
             mensagemListaVazia.style.display = "none"; // Caso contrário, oculta a mensagem de lista vazia.
         }
     }
-    export default verificarListaVazia;
+  export default verificarListaVazia;
